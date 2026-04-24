@@ -1,0 +1,35 @@
+<% layout("/layouts/boilerplate") %>
+  <!-- The above line means the content written in body of layouts/boilerplate.ejs will be display on currnet eje file -->
+  <body>
+    <h3>ALL LISTINGS</h3>
+
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+      <% for( let l of allListings){%>
+        <a href="/listings/<%= l._id %>" class="listing-link">
+          <div class="card col listing-card">
+            <img class="card-img-top" src="<%= l.image || 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c' %>"
+ alt="listing_image" style="height:20rem">
+
+            <div class="card-img-overlay"></div>
+
+            <div class="card-body">
+              <p class="card-text">
+                <b>
+                  <%= l.title %> <br>
+                </b>
+                
+                &#8377; <%= l.price.toLocaleString("en-IN") %>
+
+
+              </p>
+            </div>
+          </div>
+        </a>
+
+          <%}%>
+    </div>
+    <!-- 
+    <form action="/listings/new" method="GET">
+        <button>Create New Listing</button>
+    </form> -->
+  </body>
